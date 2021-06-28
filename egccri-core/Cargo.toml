@@ -1,0 +1,21 @@
+[package]
+name = "egccri-core"
+version = "0.0.0"
+authors = ["zifeng <zifeng.1024@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+egccri-model = { path = "../egccri-model" }
+mqtt-server = { path = "components/mqtt-server", optional = true }
+egccri-streaming = { path = "components/egccri-streaming", optional = true }
+egccri-metadata = { path = "components/egccri-metadata", optional = true }
+
+[features]
+default = ["mqtt", "streaming", "metadata"]
+mqtt = ["mqtt-server"]
+streaming = ["egccri-streaming"]
+metadata = ["egccri-metadata"]
+opa-ua = []
+modbus = []
