@@ -12,6 +12,15 @@ mqtt-server = { path = "components/mqtt-server", optional = true }
 egccri-streaming = { path = "components/egccri-streaming", optional = true }
 egccri-metadata = { path = "components/egccri-metadata", optional = true }
 
+clap = "3.0.0-beta.2"
+tokio = { version = "1.6.0", features = ["full"] }
+anyhow = "1.0.40"
+serde = "1.0.126"
+rusqlite = { version = "0.25.1", features = ["bundled"] }
+log = "0.4.14"
+log4rs = "1.0.0"
+nng = "1.0.0"
+
 [features]
 default = ["mqtt", "streaming", "metadata"]
 mqtt = ["mqtt-server"]

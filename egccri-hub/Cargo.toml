@@ -7,3 +7,12 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+clap = "3.0.0-beta.2"
+tokio = { version = "1.6.0", features = ["full"] }
+anyhow = "1.0.40"
+serde = "1.0.126"
+log = "0.4.14"
+log4rs = "1.0.0"
+nng = "1.0.0"
+pulsar = "3.0"
+rdkafka = { version = "0.25", features = ["cmake-build"] }
