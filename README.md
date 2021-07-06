@@ -6,3 +6,7 @@
 [![GitHub license](https://img.shields.io/github/license/egccri/egccri)](https://github.com/egccri/egccri/blob/main/LICENSE)
 
 > Lightweight edge connect and compute runtime for various edge device.
+
+### Architecture
+
+![Architecture](docs/assert/arch.png)
