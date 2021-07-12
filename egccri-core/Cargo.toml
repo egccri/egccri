@@ -8,6 +8,7 @@ edition = "2018"
 
 [dependencies]
 egccri-model = { path = "../egccri-model" }
+capmsg = { path = "../library/capmsg" }
 mqtt-server = { path = "components/mqtt-server", optional = true }
 egccri-streaming = { path = "components/egccri-streaming", optional = true }
 egccri-metadata = { path = "components/egccri-metadata", optional = true }
