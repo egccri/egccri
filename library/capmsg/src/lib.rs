@@ -1,5 +1,8 @@
+pub mod builder;
+
 use std::any::Any;
 use std::net::IpAddr;
+use crate::builder::SocketBuilder;
 
 pub enum Protocol {
     PUSH,
@@ -10,21 +13,27 @@ pub enum Protocol {
     REP,
 }
 
+#[derive(Debug, PartialEq, PartialOrd, Clone, Copy)]
+pub enum QoS {
+    AtMostOnce = 0,
+    AtLeastOnce = 1,
+    ExactlyOnce = 2,
+}
+
+#[derive(Debug, PartialEq)]
 pub struct Socket {
     protocol: Protocol,
     address: IpAddr,
+    qos: QoS,
 }
 
 /// reconnect
 /// heartbeat
 /// QOS
-#[allow(dead_code)]
 impl Socket {
-    pub fn new(protocol: Protocol, ip: IpAddr) -> Self {
-        Socket {
-            protocol,
-            address: ip,
-        }
+
+    pub fn builder() -> FooBuilder {
+        SocketBuilder::default()
     }
 
     pub fn bind(address: IpAddr) {}
