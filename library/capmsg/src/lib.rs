@@ -1,8 +1,8 @@
 pub mod builder;
 
+use crate::builder::SocketBuilder;
 use std::any::Any;
 use std::net::IpAddr;
-use crate::builder::SocketBuilder;
 
 #[derive(Debug, PartialEq, Copy, Clone)]
 pub enum Protocol {
@@ -38,7 +38,6 @@ pub struct Socket {
 /// heartbeat
 /// QOS
 impl Socket {
-
     pub fn builder() -> SocketBuilder {
         SocketBuilder::default()
     }
