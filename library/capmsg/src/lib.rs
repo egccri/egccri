@@ -4,6 +4,7 @@ use std::any::Any;
 use std::net::IpAddr;
 use crate::builder::SocketBuilder;
 
+#[derive(Debug, PartialEq, Copy, Clone)]
 pub enum Protocol {
     PUSH,
     PULL,
@@ -11,6 +12,12 @@ pub enum Protocol {
     SUB,
     REQ,
     REP,
+}
+
+impl Default for Protocol {
+    fn default() -> Self {
+        Protocol::REP
+    }
 }
 
 #[derive(Debug, PartialEq, PartialOrd, Clone, Copy)]
@@ -32,7 +39,7 @@ pub struct Socket {
 /// QOS
 impl Socket {
 
-    pub fn builder() -> FooBuilder {
+    pub fn builder() -> SocketBuilder {
         SocketBuilder::default()
     }
 
