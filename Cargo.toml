@@ -11,3 +11,10 @@ members = [
     "egccri-core/components/egccri-streaming",
     "egccri-core/components/mqtt-server",
 ]
+
+[profile.dev]
+opt-level = 0
+
+[profile.release]
+panic = 'abort'
+opt-level = 3
