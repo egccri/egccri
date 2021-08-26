@@ -1,8 +1,5 @@
 mod networks;
 
-use log::info;
-use tokio::spawn;
-
 #[tokio::main]
 async fn main() {
     log4rs::init_file("egccri-core/log4rs.yaml", Default::default()).unwrap();
@@ -14,12 +11,12 @@ async fn main() {
     // 3. fetch shadow information
 
     // 4. inti mqtt networks.servers
-    inti_mqtt_server();
+    inti_mqtt_server().await;
 }
 
-fn inti_mqtt_server() {
+async fn inti_mqtt_server() {
     #[cfg(feature = "mqtt")]
-    use mqtt_server::server as m_server;
+    use networks::servers::mqtt_server;
     #[cfg(feature = "mqtt")]
-    m_server::say_hi();
+    mqtt_server::start_mqtt_server("0.0.0.0:1883").await;
 }

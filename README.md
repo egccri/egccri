@@ -10,3 +10,10 @@
 ### Architecture
 
 ![Architecture](docs/assert/arch.png)
+
+### QuickStart
+
+```shell
+cargo run --bin egccri-hub
+cargo run --bin egccri-core
+```
