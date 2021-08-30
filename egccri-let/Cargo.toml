@@ -7,3 +7,10 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+wasmtime = "0.28.0"
+wasmtime-wasi = "0.28.0"
+wat = "1.0.38"
+wasi-experimental-http-wasmtime = "0.5.0"
+krator = "0.4.0"
+kube = {version = "0.58", default-features = false}
+anyhow = "1.0.33"
