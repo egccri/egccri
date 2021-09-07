@@ -1,4 +1,4 @@
-<img src="https://github.com/egccri/egccri/blob/main/docs/assert/logo.png" style="zoom:33%" />
+<img src="https://github.com/egccri/egccri/blob/main/docs/assert/logo.png" width="33%" height="33%"/>
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/egccri/egccri/Rust)
 [![GitHub issues](https://img.shields.io/github/issues/egccri/egccri)](https://github.com/egccri/egccri/issues)
