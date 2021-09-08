@@ -1,0 +1,39 @@
+{
+  "id": "uuid",
+  "name": "温度计",
+  "address": {},
+  "namespace": "namespace",
+  "profile": {
+    "id": 1000,
+    "name": "小米温度计模板",
+    "manufacturer": "小米",
+    "namespace": "namespace",
+    "resources": [
+      {
+        "id": 21,
+        "name": "温度",
+        "description": "温度计显示温度",
+        "resource_scheme": "Telemetry",
+        "property": {
+          "value": {
+            "value_type": "DOUBLE",
+            "access_mode": 0,
+            "default_value": "26",
+            "base": "1",
+            "scale": 1.0,
+            "offset": 0
+          },
+          "units": {}
+        }
+      }
+    ],
+    "labels": {
+      "a": "1",
+      "b": "2"
+    }
+  },
+  "properties": {
+    "a": "1",
+    "b": "2"
+  }
+}

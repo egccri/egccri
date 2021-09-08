@@ -1,3 +1,5 @@
+use crate::device::profile::profile_property::ProfileProperty;
+
 enum ResourceScheme {
     Property,
     Telemetry,
@@ -9,4 +11,5 @@ pub struct DeviceResource {
     name: String,
     description: String,
     resource_scheme: ResourceScheme,
+    property: ProfileProperty,
 }

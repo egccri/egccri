@@ -21,6 +21,7 @@ pub struct PropertyValue {
 pub enum Type {
     STRING(String),
     INI(i32),
+    DOUBLE(f32),
 }
 
 #[derive(Debug, PartialEq, PartialOrd, Clone, Copy)]

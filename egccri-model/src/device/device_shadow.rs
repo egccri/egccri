@@ -1,8 +1,8 @@
 use crate::device::profile::device_profile;
 use std::collections::HashMap;
 
-struct DeviceShadow {
-    id: i32,
+pub struct DeviceShadow {
+    id: String,
     name: String,
     address: Addressable,
     namespace: String,
@@ -13,9 +13,9 @@ struct DeviceShadow {
 struct Addressable {}
 
 impl DeviceShadow {
-    fn new(id: i32, profile: device_profile::DeviceProfile) -> Self {
+    pub fn new(id_str: &str, profile: device_profile::DeviceProfile) -> Self {
         DeviceShadow {
-            id,
+            id: id_str.to_string(),
             name: "Pascal".to_string(),
             address: Addressable {},
             namespace: "Namespace".to_string(),

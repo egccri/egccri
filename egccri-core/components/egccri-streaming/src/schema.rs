@@ -1,7 +1,3 @@
-pub struct Schema {
+pub struct Schema {}
 
-}
-
-pub struct Filed {
-
-}
+pub struct Filed {}

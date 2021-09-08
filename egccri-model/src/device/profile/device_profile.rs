@@ -11,7 +11,7 @@ pub struct DeviceProfile {
 }
 
 impl DeviceProfile {
-    fn new(id: i32, resources: Vec<DeviceResource>) -> Self {
+    pub fn new(id: i32, resources: Vec<DeviceResource>) -> Self {
         DeviceProfile {
             id,
             name: "Pascal".to_string(),
