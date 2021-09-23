@@ -1,4 +1,6 @@
 pub mod builder;
+mod transport;
+mod protocol;
 
 use crate::builder::SocketBuilder;
 use std::any::Any;
