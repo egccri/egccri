@@ -30,10 +30,18 @@ pub enum QoS {
 }
 
 #[derive(Debug, PartialEq)]
-pub struct Socket {
+pub struct Node {
     protocol: Protocol,
     address: IpAddr,
-    qos: QoS,
+}
+
+pub struct Peer {
+    node: Node,
+    qos: QoS, // QoS is determined by the peer, and negotiation between two peers.
+}
+
+pub struct Router {
+    node: Node,
 }
 
 /// reconnect
