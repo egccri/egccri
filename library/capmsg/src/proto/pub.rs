@@ -1,0 +1,7 @@
+struct Subscriber {
+
+}
+
+struct PubSocket {
+
+}

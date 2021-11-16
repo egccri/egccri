@@ -1,6 +1,6 @@
 pub mod builder;
 mod transport;
-mod protocol;
+mod proto;
 
 use crate::builder::SocketBuilder;
 use std::any::Any;
@@ -42,6 +42,10 @@ pub struct Peer {
 
 pub struct Router {
     node: Node,
+}
+
+struct Socket {
+
 }
 
 /// reconnect
