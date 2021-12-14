@@ -1,3 +1,1 @@
-struct SubSocket {
-
-}
+struct SubSocket {}

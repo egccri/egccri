@@ -1,6 +1,8 @@
 pub mod builder;
-mod transport;
+mod handle;
+mod message;
 mod proto;
+mod transport;
 
 use crate::builder::SocketBuilder;
 use std::any::Any;
@@ -44,9 +46,7 @@ pub struct Router {
     node: Node,
 }
 
-struct Socket {
-
-}
+struct Socket {}
 
 /// reconnect
 /// heartbeat
