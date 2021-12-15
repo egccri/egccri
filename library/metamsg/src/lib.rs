@@ -3,8 +3,10 @@ mod handle;
 mod message;
 mod proto;
 mod transport;
+mod channel;
+mod frame;
 
-use crate::builder::SocketBuilder;
+use crate::builder::WhoBuilder;
 use std::any::Any;
 use std::net::IpAddr;
 
@@ -16,6 +18,11 @@ pub enum Protocol {
     SUB,
     REQ,
     REP,
+}
+
+pub enum Who {
+    Peer,
+    Router,
 }
 
 impl Default for Protocol {
@@ -46,19 +53,19 @@ pub struct Router {
     node: Node,
 }
 
-struct Socket {}
-
 /// reconnect
 /// heartbeat
 /// QOS
-impl Socket {
-    pub fn builder() -> SocketBuilder {
-        SocketBuilder::default()
-    }
+trait  Socket {
 
-    pub fn bind(address: IpAddr) {}
+    fn bind(address: IpAddr) {}
 
-    pub fn send(message: Box<dyn Any>) {}
+    fn send(message: Box<dyn Any>) {}
 
-    pub fn dial(address: IpAddr) {}
+    fn dial(address: IpAddr) {}
+}
+
+#[cfg(test)]
+mod tests {
+
 }

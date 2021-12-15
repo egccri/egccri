@@ -6,7 +6,7 @@ members = [
     "egccri-let",
     "egccri-model",
     "library/module-sdk",
-    "library/capmsg",
+    "library/metamsg",
     "egccri-core/components/egccri-metadata",
     "egccri-core/components/egccri-streaming",
     "egccri-core/components/mqtt-server",
