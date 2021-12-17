@@ -8,7 +8,8 @@ mod frame;
 
 use crate::builder::WhoBuilder;
 use std::any::Any;
-use std::net::IpAddr;
+use std::net::{Ipv4Addr, Ipv6Addr};
+use std::path::PathBuf;
 
 #[derive(Debug, PartialEq, Copy, Clone)]
 pub enum Protocol {
@@ -41,8 +42,25 @@ pub enum QoS {
 #[derive(Debug, PartialEq)]
 pub struct Node {
     protocol: Protocol,
-    address: IpAddr,
+    address: Address,
 }
+
+pub enum Address {
+    Tcp(Host, Port),
+    Ipc(Option<PathBuf>),
+}
+
+#[derive(Debug, Clone, Hash, PartialEq, Eq)]
+pub enum Host {
+    /// An IPv4 address
+    Ipv4(Ipv4Addr),
+    /// An Ipv6 address
+    Ipv6(Ipv6Addr),
+    /// A domain name, such as `example.com` in `tcp://example.com:4567`.
+    Domain(String),
+}
+
+pub type Port = u16;
 
 pub struct Peer {
     node: Node,
@@ -58,12 +76,13 @@ pub struct Router {
 /// QOS
 trait  Socket {
 
-    fn bind(address: IpAddr) {}
+    fn bind(node: Node) {}
 
     fn send(message: Box<dyn Any>) {}
 
-    fn dial(address: IpAddr) {}
+    fn dial(node: Node) {}
 }
+
 
 #[cfg(test)]
 mod tests {

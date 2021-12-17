@@ -14,8 +14,9 @@ impl Display for MessageError {
 
 // 不同协议的Handler可能不同，动态适配或者继承
 // 此handler为公共handler，用来解决重连，超时等
-trait Handler {
-    type Future: Future<Output = Result<Message, MessageError>>;
+pub trait Handle<Channel> {
+
+    type Future: Future<Output = Result<Channel, MessageError>>;
 
     fn on_message(&mut self, message: Message) -> Self::Future;
 }
