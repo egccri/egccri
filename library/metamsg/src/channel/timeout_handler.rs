@@ -1,5 +1,4 @@
 use std::future::Future;
-use std::os::windows::raw::HANDLE;
 use std::time::Duration;
 use crate::channel::connection::Channel;
 use crate::handle::{Handle, MessageError};

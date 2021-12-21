@@ -45,6 +45,7 @@ pub struct Node {
     address: Address,
 }
 
+#[derive(Debug, PartialEq)]
 pub enum Address {
     Tcp(Host, Port),
     Ipc(Option<PathBuf>),
