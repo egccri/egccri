@@ -3,13 +3,15 @@ mod handle;
 mod message;
 mod proto;
 mod transport;
-mod channel;
+pub mod channel;
 mod frame;
 
 use crate::builder::WhoBuilder;
 use std::any::Any;
 use std::net::{Ipv4Addr, Ipv6Addr};
 use std::path::PathBuf;
+
+pub type BoxError = Box<dyn std::error::Error + Send + Sync>;
 
 #[derive(Debug, PartialEq, Copy, Clone)]
 pub enum Protocol {
