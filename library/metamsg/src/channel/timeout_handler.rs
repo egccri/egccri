@@ -26,10 +26,11 @@ impl<H> Timeout<H> {
 impl<H, Channel> Handle<Channel> for Timeout<H>
 where
     H: Handle<Channel>,
+    H::Error: Into<crate::BoxError>,
 {
     type Stream = H::Stream;
 
-    type Error = H::Error;
+    type Error = crate::BoxError;
 
     type Future = StreamFuture<H::Future>;
 
@@ -41,24 +42,24 @@ where
     }
 
     fn process(&mut self, channel: Channel) -> Self::Future {
-        StreamFuture::new(channel)
+        // process inner first
+        let stream = self.inner.process(channel);
+        // create a future to execute
+        StreamFuture::new(stream)
     }
 }
 
 pin_project! {
-    /// [`Timeout`] stream future
-    ///
-    /// [`Timeout`]: crate::timeout::Timeout
     #[derive(Debug)]
     pub struct StreamFuture<T> {
         #[pin]
-        response: T,
+        stream: T,
     }
 }
 
 impl<T> StreamFuture<T> {
-    pub(crate) fn new(response: T) -> Self {
-        StreamFuture { response }
+    pub(crate) fn new(stream: T) -> Self {
+        StreamFuture { stream }
     }
 }
 
@@ -73,7 +74,7 @@ impl<F, T, E> Future for StreamFuture<F>
         let this = self.project();
 
         // First, try polling the future
-        match this.response.poll(cx) {
+        match this.stream.poll(cx) {
             Poll::Ready(v) => return Poll::Ready(v.map_err(Into::into)),
             Poll::Pending => {}
         }

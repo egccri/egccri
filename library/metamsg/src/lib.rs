@@ -11,6 +11,28 @@ use std::any::Any;
 use std::net::{Ipv4Addr, Ipv6Addr};
 use std::path::PathBuf;
 
+/// a build server example to run handler.
+/// ```
+/// use tokio::net::TcpListener;
+/// use metamsg::channel::Channel;
+/// use metamsg::channel::stream_handler::StreamHandler;
+/// use metamsg::channel::timeout_handler::Timeout;
+///
+/// let listener = TcpListener::bind("127.0.0.1");
+/// let stream_handler = StreamHandler;
+/// let handle = Timeout::new(
+///     stream_handler, Duration::from_micros(1000)
+/// );
+/// loop {
+///     let mut connection = listener.accept().await;
+///     let channel = Channel::new(connection);
+///     match handle.call(channel).await {
+///         Ok(()) => (),
+///         Err(()) => (),
+///     }
+/// }
+/// ```
+///
 pub type BoxError = Box<dyn std::error::Error + Send + Sync>;
 
 #[derive(Debug, PartialEq, Copy, Clone)]

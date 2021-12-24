@@ -38,17 +38,4 @@ fn test_consume_handle() {
     let handle = crate::channel::timeout_handler::Timeout::new(
         stream_handler, Duration::from_micros(1000)
     );
-    /// a build server example to run handler.
-    /// ```
-    /// use tokio::net::TcpListener;
-    /// use metamsg::channel::Channel;
-    /// let listener = TcpListener::bind("127.0.0.1");
-    /// loop {
-    ///     let mut connection = listener.accept().await;
-    ///     let channel = Channel::new(connection);
-    ///     match handle.call(channel).await {
-    ///         Ok(()) => (),
-    ///         Err(()) => (),
-    ///     }
-    /// }
 }
