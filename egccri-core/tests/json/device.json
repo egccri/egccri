@@ -5,8 +5,8 @@
   "namespace": "namespace",
   "profile": {
     "id": 1000,
-    "name": "小米温度计模板",
-    "manufacturer": "小米",
+    "name": "温度计模板",
+    "manufacturer": "制造商",
     "namespace": "namespace",
     "resources": [
       {
