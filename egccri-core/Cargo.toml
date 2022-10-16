@@ -7,12 +7,10 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-egccri-model = { path = "../egccri-model" }
-metamsg = { path = "../library/metamsg" }
-mqtt-server = { path = "components/mqtt-server", optional = true }
-egccri-streaming = { path = "components/egccri-streaming", optional = true }
-egccri-metadata = { path = "components/egccri-metadata", optional = true }
-
+egccri-device-model = { path = "../crates/egccri-device-model" }
+egccri-connect-modbus = { path = "../crates/egccri-connect-modbus", optional = true }
+egccri-connect-mqtt = { path = "../crates/egccri-connect-mqtt", optional = true }
+egccri-compute-core = { path = "../crates/egccri-compute/egccri-compute-core", optional = true }
 clap = "3.0.0-beta.2"
 tokio = { version = "1.6.0", features = ["full"] }
 anyhow = "1.0.40"
@@ -24,9 +22,8 @@ log4rs = "1.0.0"
 nng = "1.0.0"
 
 [features]
-default = ["mqtt", "streaming", "metadata"]
-mqtt = ["mqtt-server"]
-streaming = ["egccri-streaming"]
-metadata = ["egccri-metadata"]
+default = ["mqtt", "streaming"]
+mqtt = ["egccri-connect-mqtt"]
+streaming = ["egccri-compute-core"]
 opa-ua = []
-modbus = []
+modbus = ["egccri-connect-modbus"]

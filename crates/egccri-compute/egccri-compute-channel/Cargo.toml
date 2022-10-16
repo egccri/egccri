@@ -1,10 +1,8 @@
 [package]
-name = "egccri-streaming"
-version = "0.0.0"
-authors = ["zifeng <zifeng.1024@gmail.com>"]
-edition = "2018"
+name = "egccri-compute-channel"
+version = "0.1.0"
+edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-arrow = "5.3.0"

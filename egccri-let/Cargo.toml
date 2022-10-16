@@ -7,8 +7,8 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-wasmtime = "0.28.0"
-wasmtime-wasi = "0.28.0"
-wat = "1.0.38"
-wasi-experimental-http-wasmtime = "0.5.0"
+wasmtime = "1.0.1"
+wasmtime-wasi = "1.0.1"
+wat = "1.0.49"
+wasi-experimental-http-wasmtime = "0.10.0"
 anyhow = "1.0.33"
