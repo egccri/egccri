@@ -10,6 +10,7 @@ members = [
     "crates/egccri-connect-mqtt",
     "crates/egccri-device-manager",
     "crates/egccri-device-model",
+    "crates/egccri-storage-sqlite",
     "crates/egccri-compute/egccri-compute-core",
     "crates/egccri-compute/egccri-compute-uds",
     "crates/egccri-compute/egccri-compute-channel",

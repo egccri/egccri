@@ -1,5 +1,5 @@
 [package]
-name = "egccri-device-manager"
+name = "egccri-storage-sqlite"
 version = "0.1.0"
 edition = "2021"
 
@@ -7,5 +7,6 @@ edition = "2021"
 
 [dependencies]
 egccri-device-model = { path = "../egccri-device-model" }
-serde = "1.0.145"
-serde_json = "1.0.86"
+rusqlite = { version = "0.28.0", features = ["bundled"] }
+thiserror = "1.0.37"
+

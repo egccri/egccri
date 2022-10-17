@@ -11,12 +11,12 @@ egccri-device-model = { path = "../crates/egccri-device-model" }
 egccri-connect-modbus = { path = "../crates/egccri-connect-modbus", optional = true }
 egccri-connect-mqtt = { path = "../crates/egccri-connect-mqtt", optional = true }
 egccri-compute-core = { path = "../crates/egccri-compute/egccri-compute-core", optional = true }
-clap = "3.0.0-beta.2"
-tokio = { version = "1.6.0", features = ["full"] }
+clap = "4.0.14"
+tokio = { version = "1", features = ["full"] }
 anyhow = "1.0.40"
 serde = "1.0.126"
 serde_json = "1.0.67"
-rusqlite = { version = "0.25.1", features = ["bundled"] }
+rusqlite = { version = "0.28.0", features = ["bundled"] }
 log = "0.4.14"
 log4rs = "1.0.0"
 nng = "1.0.0"
