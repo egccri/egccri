@@ -7,6 +7,8 @@ edition = "2021"
 
 [dependencies]
 egccri-device-model = { path = "../egccri-device-model" }
-rusqlite = { version = "0.28.0", features = ["bundled"] }
+#rusqlite = { version = "0.28.0", features = ["bundled"] }
+sqlx = { version = "0.6", features = ["sqlite", "runtime-tokio-rustls"] }
 thiserror = "1.0.37"
+lazy_static = "1.4.0"
 

@@ -6,6 +6,7 @@ members = [
     "egccri-let",
     "library/module-sdk",
     "library/metamsg",
+    "library/micro-async-module",
     "crates/egccri-connect-modbus",
     "crates/egccri-connect-mqtt",
     "crates/egccri-device-manager",

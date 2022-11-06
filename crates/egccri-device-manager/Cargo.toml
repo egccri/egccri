@@ -7,5 +7,6 @@ edition = "2021"
 
 [dependencies]
 egccri-device-model = { path = "../egccri-device-model" }
+egccri-storage-sqlite = { path = "../egccri-storage-sqlite" }
 serde = "1.0.145"
 serde_json = "1.0.86"
