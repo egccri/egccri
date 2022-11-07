@@ -13,7 +13,6 @@ impl Service for EgccriModbusServer {
     }
 }
 
-
 #[cfg(test)]
 mod tests {
     #[test]

@@ -1,7 +1,27 @@
-[workspace]
+[package]
+name = "egccri-cli"
+version = "0.0.0"
+authors = ["zifeng <zifeng.1024@gmail.com>"]
+edition = "2021"
 
+[lib]
+doctest = false
+
+[[bin]]
+name = "egccri"
+path = "src/bin/single_server.rs"
+doc = false
+
+[dependencies]
+egccri-core = { path = "egccri-core" }
+egccri-streaming = { path = "egccri-streaming" }
+egccri-let = { path = "egccri-let" }
+clap = "4.0.15"
+
+[workspace]
 members = [
     "egccri-core",
+    "egccri-streaming",
     "egccri-hub",
     "egccri-let",
     "library/module-sdk",
@@ -12,11 +32,11 @@ members = [
     "crates/egccri-device-manager",
     "crates/egccri-device-model",
     "crates/egccri-storage-sqlite",
-    "crates/egccri-compute/egccri-compute-core",
-    "crates/egccri-compute/egccri-compute-uds",
-    "crates/egccri-compute/egccri-compute-channel",
-    "crates/egccri-compute/egccri-compute-scheduler",
-    "crates/egccri-compute/egccri-compute-storage",
+    "crates/egccri-compute-core",
+    "crates/egccri-compute-uds",
+    "crates/egccri-compute-channel",
+    "crates/egccri-compute-scheduler",
+    "crates/egccri-compute-storage",
 ]
 
 [profile.dev]

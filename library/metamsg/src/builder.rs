@@ -16,8 +16,6 @@ impl Default for WhoBuilder {
     }
 }
 
-
-
 #[test]
 fn test_default() {
     let socket_default = WhoBuilder {
@@ -26,4 +24,3 @@ fn test_default() {
     };
     println!("{:?}", socket_default);
 }
-

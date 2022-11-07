@@ -11,15 +11,12 @@ use crate::message::Message;
 #[derive(Debug, Clone)]
 pub struct Timeout<H> {
     inner: H,
-    timeout: Duration
+    timeout: Duration,
 }
 
 impl<H> Timeout<H> {
     pub fn new(inner: H, timeout: Duration) -> Timeout<H> {
-        Timeout {
-            inner,
-            timeout,
-        }
+        Timeout { inner, timeout }
     }
 }
 
@@ -64,9 +61,9 @@ impl<T> StreamFuture<T> {
 }
 
 impl<F, T, E> Future for StreamFuture<F>
-    where
-        F: Future<Output = Result<T, E>>,
-        E: Into<crate::BoxError>,
+where
+    F: Future<Output = Result<T, E>>,
+    E: Into<crate::BoxError>,
 {
     type Output = Result<T, crate::BoxError>;
 
@@ -86,4 +83,3 @@ impl<F, T, E> Future for StreamFuture<F>
         }
     }
 }
-

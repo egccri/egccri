@@ -10,7 +10,7 @@ edition = "2021"
 egccri-device-model = { path = "../crates/egccri-device-model" }
 egccri-connect-modbus = { path = "../crates/egccri-connect-modbus", optional = true }
 egccri-connect-mqtt = { path = "../crates/egccri-connect-mqtt", optional = true }
-egccri-compute-core = { path = "../crates/egccri-compute/egccri-compute-core", optional = true }
+egccri-compute-core = { path = "../crates/egccri-compute-core", optional = true }
 clap = "4.0.14"
 tokio = { version = "1", features = ["full"] }
 anyhow = "1.0.40"

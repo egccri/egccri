@@ -1,14 +1,13 @@
+use crate::channel::Channel;
+use crate::handle::Handle;
 use std::future::Future;
 use std::pin::Pin;
 use std::task::{Context, Poll};
-use crate::channel::Channel;
-use crate::handle::Handle;
 
 /// The last common handler, covert stream to message
 pub struct StreamHandler;
 
 impl Handle<Channel> for StreamHandler {
-
     type Stream = ();
     type Error = crate::BoxError;
     type Future = Pin<Box<dyn Future<Output = Result<Self::Stream, Self::Error>>>>;
@@ -18,8 +17,6 @@ impl Handle<Channel> for StreamHandler {
     }
 
     fn process(&mut self, channel: Channel) -> Self::Future {
-        Box::pin(async move {
-
-        })
+        Box::pin(async move {})
     }
 }

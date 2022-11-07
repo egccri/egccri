@@ -1,10 +1,10 @@
 pub mod builder;
+pub mod channel;
+mod frame;
 mod handle;
 mod message;
 mod proto;
 mod transport;
-pub mod channel;
-mod frame;
 
 use crate::builder::WhoBuilder;
 use std::any::Any;
@@ -99,8 +99,7 @@ pub struct Router {
 /// reconnect
 /// heartbeat
 /// QOS
-trait  Socket {
-
+trait Socket {
     fn bind(node: Node) {}
 
     fn send(message: Box<dyn Any>) {}
@@ -108,8 +107,5 @@ trait  Socket {
     fn dial(node: Node) {}
 }
 
-
 #[cfg(test)]
-mod tests {
-
-}
+mod tests {}

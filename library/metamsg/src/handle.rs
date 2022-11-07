@@ -1,9 +1,9 @@
+use crate::channel::stream_handler::StreamHandler;
+use crate::channel::Channel;
 use std::fmt::{Display, Formatter};
 use std::future::Future;
 use std::task::{Context, Poll};
 use std::time::Duration;
-use crate::channel::Channel;
-use crate::channel::stream_handler::StreamHandler;
 
 use crate::message::Message;
 
@@ -20,7 +20,6 @@ impl Display for MessageError {
 // 此handler为公共handler，用来解决重连，超时等
 // 一个特殊的Handle，转换Stream到Message
 pub trait Handle<Channel> {
-
     type Stream;
 
     type Error;
@@ -35,7 +34,6 @@ pub trait Handle<Channel> {
 #[test]
 fn test_consume_handle() {
     let stream_handler = StreamHandler;
-    let handle = crate::channel::timeout_handler::Timeout::new(
-        stream_handler, Duration::from_micros(1000)
-    );
+    let handle =
+        crate::channel::timeout_handler::Timeout::new(stream_handler, Duration::from_micros(1000));
 }
