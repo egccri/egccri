@@ -17,5 +17,5 @@
 
 ```shell
 cargo run --bin egccri-hub
-cargo run --bin egccri-core
+cargo run --bin egccri-connect
 ```

@@ -9,24 +9,25 @@ doctest = false
 
 [[bin]]
 name = "egccri"
-path = "src/bin/single_server.rs"
+path = "src/bin/standalone.rs"
 doc = false
 
 [dependencies]
-egccri-core = { path = "egccri-core" }
-egccri-streaming = { path = "egccri-streaming" }
+egccri-core = { path = "egccri-connect" }
+egccri-streaming = { path = "egccri-compute" }
 egccri-let = { path = "egccri-let" }
 clap = "4.0.15"
+once_cell = "1.15.0"
+anyhow = "1.0.65"
 
 [workspace]
 members = [
-    "egccri-core",
-    "egccri-streaming",
+    "egccri-connect",
+    "egccri-compute",
     "egccri-hub",
     "egccri-let",
-    "library/module-sdk",
-    "library/metamsg",
     "library/micro-async-module",
+    "library/module-sdk",
     "crates/egccri-connect-modbus",
     "crates/egccri-connect-mqtt",
     "crates/egccri-device-manager",
