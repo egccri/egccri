@@ -1,9 +1,9 @@
-use std::path::Path;
 use anyhow::Result;
+use std::path::Path;
 
 pub struct DeviceCommand {
     /// load a device profile from file path.
-    load: Path
+    load: Path,
 }
 
 impl DeviceCommand {
