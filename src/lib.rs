@@ -63,4 +63,5 @@ static GLOBAL_DATA: Lazy<Mutex<HashMap<i32, String>>> = Lazy::new(|| {
     Mutex::new(m)
 });
 
+/// commands
 pub mod commands;

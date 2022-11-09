@@ -4,12 +4,11 @@ mod shadow;
 
 #[tokio::main]
 async fn main() {
-    log4rs::init_file("egccri-core/log4rs.yaml", Default::default()).unwrap();
-
     // 1. init store
 
     // 2. init core conn to the edge-hub
-    networks::clients::nng_push::push("tcp://127.0.0.1:5555", "Hub, i got you!");
+    networks::clients::nng_push::push("tcp://127.0.0.1:5555", "Hub, i got you!")
+        .expect("nng error");
     // 3. fetch shadow information
 
     // 4. inti mqtt networks.servers

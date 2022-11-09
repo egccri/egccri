@@ -1,8 +1,8 @@
 [package]
-name = "egccri-core"
-version = "0.0.0"
-authors = ["zifeng <zifeng.1024@gmail.com>"]
-edition = "2021"
+name = "egccri-connect"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -10,19 +10,14 @@ edition = "2021"
 egccri-device-model = { path = "../crates/egccri-device-model" }
 egccri-connect-modbus = { path = "../crates/egccri-connect-modbus", optional = true }
 egccri-connect-mqtt = { path = "../crates/egccri-connect-mqtt", optional = true }
-egccri-compute-core = { path = "../crates/egccri-compute-core", optional = true }
-clap = "4.0.14"
 tokio = { version = "1", features = ["full"] }
-anyhow = "1.0.40"
+anyhow = { workspace = true }
 serde = "1.0.126"
 serde_json = "1.0.67"
-log = "0.4.14"
-log4rs = "1.0.0"
 nng = "1.0.0"
 
 [features]
-default = ["mqtt", "streaming"]
+default = ["mqtt"]
 mqtt = ["egccri-connect-mqtt"]
-streaming = ["egccri-compute-core"]
 opa-ua = []
 modbus = ["egccri-connect-modbus"]

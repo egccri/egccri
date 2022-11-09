@@ -1,11 +1,12 @@
 use anyhow::Result;
-use clap::Parser;
 
 // TODO Split connect and compute run.
-#[derive(Parser)]
+/// sub command run egccri modules.
+#[derive(clap::Parser, Debug)]
 pub struct RunCommand {}
 
 impl RunCommand {
+    /// execute command
     pub fn execute(&self) -> Result<()> {
         // initial storage.
 
@@ -13,6 +14,6 @@ impl RunCommand {
 
         // run compute.
 
-        OK(())
+        Ok(())
     }
 }

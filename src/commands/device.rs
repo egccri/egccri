@@ -1,6 +1,8 @@
 use anyhow::Result;
 use std::path::Path;
 
+/// sub command device
+#[derive(Debug)]
 pub struct DeviceCommand {
     /// load a device profile from file path.
     load: Path,
@@ -9,6 +11,6 @@ pub struct DeviceCommand {
 impl DeviceCommand {
     /// Executes the command.
     pub fn execute(&self) -> Result<()> {
-        OK(())
+        Ok(())
     }
 }
