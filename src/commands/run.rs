@@ -3,7 +3,6 @@ use anyhow::Result;
 use tracing::info;
 
 /// sub command run egccri modules.
-
 #[derive(clap::Subcommand, Debug)]
 pub enum RunCommand {
     /// run sub command connect
@@ -21,7 +20,10 @@ impl RunCommand {
         match self {
             RunCommand::Connect(command) => command.execute(),
             RunCommand::Compute(command) => command.execute(),
-            RunCommand::All => { info!("Run all module"); Ok(()) },
+            RunCommand::All => {
+                info!("Run all module");
+                Ok(())
+            }
         }
     }
 }

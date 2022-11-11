@@ -11,7 +11,7 @@ impl RunConnect {
     /// execute run_connect command
     pub fn execute(self) -> Result<()> {
         // initial storage.
-
+        egccri_connect::start();
         Ok(())
     }
 }

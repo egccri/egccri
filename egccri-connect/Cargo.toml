@@ -7,14 +7,19 @@ edition.workspace = true
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+micro-async-module = { path = "../library/micro-async-module" }
 egccri-device-model = { path = "../crates/egccri-device-model" }
 egccri-connect-modbus = { path = "../crates/egccri-connect-modbus", optional = true }
 egccri-connect-mqtt = { path = "../crates/egccri-connect-mqtt", optional = true }
-tokio = { version = "1", features = ["full"] }
+tokio = { workspace = true, features = ["rt-multi-thread", "time", "macros"] }
 anyhow = { workspace = true }
+tracing = { workspace = true }
 serde = "1.0.126"
 serde_json = "1.0.67"
 nng = "1.0.0"
+
+[dev-dependencies]
+tracing-subscriber = { workspace = true }
 
 [features]
 default = ["mqtt"]

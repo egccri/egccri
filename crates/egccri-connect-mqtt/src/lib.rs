@@ -48,17 +48,17 @@ pub mod server {
             listeners.push(tokio::spawn(listener.start_accepting()));
         }
 
-        info!("Initialized RatelMQ");
+        info!("Initialized egccri connect mqtt module");
 
         signal::ctrl_c().await.unwrap();
 
-        info!("Stopping RatelMQ");
+        info!("Stopping egccri connect mqtt module");
         ctrl_c_tx.send(()).unwrap();
 
         join_all(listeners).await;
 
         manager_future.await.unwrap();
 
-        info!("RatelMQ stopped");
+        info!("egccri connect mqtt module stopped");
     }
 }

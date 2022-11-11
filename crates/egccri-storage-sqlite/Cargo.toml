@@ -8,6 +8,7 @@ edition = "2021"
 [dependencies]
 egccri-device-model = { path = "../egccri-device-model" }
 micro-async-module = { path = "../../library/micro-async-module" }
+tracing = { workspace = true }
 #rusqlite = { version = "0.28.0", features = ["bundled"] }
 sqlx = { version = "0.6", features = ["sqlite", "runtime-tokio-rustls"] }
 thiserror = "1.0.37"

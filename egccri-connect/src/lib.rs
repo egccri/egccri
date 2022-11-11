@@ -1,9 +1,34 @@
+use micro_async_module::{run_block_on, Config, Module};
+use tracing::{info, warn};
+
 mod internal;
 mod networks;
 mod shadow;
 
-#[tokio::main]
-async fn main() {
+pub struct EgccriConnect;
+
+impl Module for EgccriConnect {
+    fn config(&self) -> Config {
+        Config {
+            name: "Connect".to_string(),
+            max_threads: 2,
+        }
+    }
+
+    fn start(&self) {
+        run_block_on(inti_mqtt_server(), self.config());
+    }
+
+    fn context(&self) {
+        todo!()
+    }
+}
+
+pub fn start() {
+    EgccriConnect.start();
+}
+
+async fn init() {
     // 1. init store
 
     // 2. init core conn to the edge-hub
@@ -16,6 +41,8 @@ async fn main() {
 }
 
 async fn inti_mqtt_server() {
+    #[cfg(not(feature = "mqtt"))]
+    warn!("The connect module mqtt feature is not enable!");
     #[cfg(feature = "mqtt")]
     use networks::servers::mqtt_server;
     #[cfg(feature = "mqtt")]
