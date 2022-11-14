@@ -34,7 +34,7 @@ impl Egccri {
 
 fn main() -> Result<()> {
     tracing_subscriber::fmt::init();
-
+    info!("Egccri standalone staring...");
     // parse or else default run command.
     Egccri::try_parse()
         .unwrap_or_else(|e| match e.kind() {

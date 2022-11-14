@@ -1,5 +1,3 @@
-mod device_storage;
-
 use lazy_static::lazy_static;
 use micro_async_module::run_block_on;
 use micro_async_module::{Config, Module};
@@ -39,4 +37,13 @@ async fn initial_table() {
 pub enum StorageError {
     #[error("storage sqlite error from {0:?}")]
     SqliteError(#[from] sqlx::Error),
+}
+
+/// storage handler
+pub trait StorageHandler {
+    fn on_add(&self);
+
+    fn on_update(&self);
+
+    fn on_delete(&self);
 }
