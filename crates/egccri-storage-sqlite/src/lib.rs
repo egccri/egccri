@@ -1,13 +1,12 @@
 use lazy_static::lazy_static;
 use micro_async_module::run_block_on;
 use micro_async_module::{Config, Module};
-use sqlx::{Pool, Sqlite, SqlitePool};
+use once_cell::sync::OnceCell;
+use sqlx::{Executor, Pool, Sqlite, SqlitePool};
 use thiserror::Error;
 use tracing::info;
 
-lazy_static! {
-    pub static ref pool: Pool<Sqlite> = SqlitePool::connect("egccri-storage.db").await?;
-}
+static POLL: OnceCell<Pool<Sqlite>> = OnceCell::new();
 
 pub struct StorageSqlite;
 
@@ -20,7 +19,7 @@ impl Module for StorageSqlite {
     }
 
     fn start(&self) {
-        run_block_on(initial_table(), self.config());
+        run_block_on(init(), self.config());
     }
 
     fn context(&self) {
@@ -28,9 +27,20 @@ impl Module for StorageSqlite {
     }
 }
 
+async fn init() {
+    let poll = init_db_pool().await;
+    CONNS.set(poll).expect("Create sqlite error!");
+    initial_table();
+}
+
+async fn init_db_pool() -> Pool<Sqlite> {
+    SqlitePool::connect("egccri-storage.sqlite").await.unwrap()
+}
+
 async fn initial_table() {
     // create table with flag.
-    info!("Initial table with flag.")
+    info!("Initial table with flag.");
+    POLL.get().unwrap().execute("select 1");
 }
 
 #[derive(Error, Debug)]

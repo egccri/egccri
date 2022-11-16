@@ -18,8 +18,6 @@ enum Egccri {
     /// Runs egccri modules.
     #[command(subcommand)]
     Run(RunCommand),
-    /// Config device.
-    Device(DeviceCommand),
 }
 
 impl Egccri {
@@ -27,7 +25,6 @@ impl Egccri {
     pub fn execute(self) -> Result<()> {
         match self {
             Self::Run(command) => command.execute(),
-            Self::Device(command) => command.execute(),
         }
     }
 }
