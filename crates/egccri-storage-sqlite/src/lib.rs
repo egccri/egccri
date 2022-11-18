@@ -1,4 +1,3 @@
-use lazy_static::lazy_static;
 use micro_async_module::run_block_on;
 use micro_async_module::{Config, Module};
 use once_cell::sync::OnceCell;
@@ -29,8 +28,8 @@ impl Module for StorageSqlite {
 
 async fn init() {
     let poll = init_db_pool().await;
-    CONNS.set(poll).expect("Create sqlite error!");
-    initial_table();
+    POLL.set(poll).expect("Create sqlite error!");
+    initial_table().await;
 }
 
 async fn init_db_pool() -> Pool<Sqlite> {

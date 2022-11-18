@@ -9,6 +9,8 @@ edition.workspace = true
 [dependencies]
 micro-async-module = { path = "../library/micro-async-module" }
 egccri-device-model = { path = "../crates/egccri-device-model" }
+egccri-device-manager = { path = "../crates/egccri-device-manager" }
+egccri-storage-sqlite = { path = "../crates/egccri-storage-sqlite" }
 egccri-connect-modbus = { path = "../crates/egccri-connect-modbus", optional = true }
 egccri-connect-mqtt = { path = "../crates/egccri-connect-mqtt", optional = true }
 tokio = { workspace = true, features = ["rt-multi-thread", "time", "macros"] }

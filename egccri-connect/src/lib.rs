@@ -1,3 +1,4 @@
+use egccri_storage_sqlite::StorageSqlite;
 use micro_async_module::{run_block_on, Config, Module};
 use tracing::{info, warn};
 
@@ -25,6 +26,7 @@ impl Module for EgccriConnect {
 }
 
 pub fn start() {
+    StorageSqlite.start();
     EgccriConnect.start();
 }
 

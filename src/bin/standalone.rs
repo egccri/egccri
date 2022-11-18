@@ -23,6 +23,7 @@ enum Egccri {
 impl Egccri {
     /// Executes the command.
     pub fn execute(self) -> Result<()> {
+        info!("Egccri standalone staring...");
         match self {
             Self::Run(command) => command.execute(),
         }
@@ -31,7 +32,6 @@ impl Egccri {
 
 fn main() -> Result<()> {
     tracing_subscriber::fmt::init();
-    info!("Egccri standalone staring...");
     // parse or else default run command.
     Egccri::try_parse()
         .unwrap_or_else(|e| match e.kind() {
