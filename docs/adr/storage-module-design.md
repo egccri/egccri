@@ -37,3 +37,5 @@ storage 依赖反转 实现方式：策略模式 + 组合模式
 storage 分为两部分，策略模板部分和存储接口实现部分
 
 ## Consequences
+
+![storage-design](../assert/storage-design.png)
