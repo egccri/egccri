@@ -6,7 +6,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-egccri-device-model = { path = "../egccri-device-model" }
+egccri-device-storage = { path = "../egccri-device-storage" }
 micro-async-module = { path = "../../library/micro-async-module" }
 tracing = { workspace = true }
 #rusqlite = { version = "0.28.0", features = ["bundled"] }

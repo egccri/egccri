@@ -2,7 +2,7 @@ use egccri_storage_sqlite::StorageSqlite;
 use micro_async_module::{run_block_on, Config, Module};
 use tracing::{info, warn};
 
-mod internal;
+pub mod cli;
 mod networks;
 mod shadow;
 

@@ -3,3 +3,5 @@ mod device_resource;
 mod profile_property;
 mod property_value;
 mod units;
+
+pub use device_profile::DeviceProfile;

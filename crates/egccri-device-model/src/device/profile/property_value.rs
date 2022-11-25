@@ -1,4 +1,5 @@
 use crate::device::profile::property_value::AccessMode::{ReadOnly, ReadWrite};
+use serde::{Deserialize, Serialize};
 use std::fmt::{self, Display, Formatter};
 
 /// + type - Required. The data type of the value. Supported types are bool, int8 - int64, uint8 - uint64, float32, float64, string, binary and arrays of the primitive types (ints, floats, bool). Arrays are specified as eg. float32array, boolarray etc.
@@ -9,22 +10,25 @@ use std::fmt::{self, Display, Formatter};
 /// + offset - a value to be added to a reading before it is returned.
 /// + mask - a binary mask which will be applied to an integer reading.
 /// + shift - a number of bits by which an integer reading will be shifted right.
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct PropertyValue {
     value_type: Type,
     access_mode: AccessMode,
-    default_value: String,
-    base: String,
-    scale: f64,
-    offset: u64,
+    default_value: Option<String>,
+    base: Option<String>,
+    scale: Option<f64>,
+    offset: Option<u64>,
 }
 
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[serde(untagged)]
 pub enum Type {
     STRING(String),
-    INI(i32),
+    INT(i32),
     DOUBLE(f32),
 }
 
-#[derive(Debug, PartialEq, PartialOrd, Clone, Copy)]
+#[derive(Debug, PartialEq, PartialOrd, Clone, Copy, Serialize, Deserialize)]
 pub enum AccessMode {
     ReadOnly = 0,
     ReadWrite = 1,

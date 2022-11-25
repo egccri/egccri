@@ -1,21 +1,23 @@
 use crate::device::profile::device_resource::DeviceResource;
+use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct DeviceProfile {
-    id: i32,
+    id: String,
     name: String,
-    manufacturer: String,
+    manufacturer: Option<String>,
     namespace: String,
     resources: Vec<DeviceResource>,
     labels: HashMap<String, String>,
 }
 
 impl DeviceProfile {
-    pub fn new(id: i32, resources: Vec<DeviceResource>) -> Self {
+    pub fn new(id: String, resources: Vec<DeviceResource>) -> Self {
         DeviceProfile {
             id,
             name: "Pascal".to_string(),
-            manufacturer: "HUAWEI".to_string(),
+            manufacturer: Option::from("HUAWEI".to_string()),
             namespace: "Namespace".to_string(),
             resources,
             labels: HashMap::new(),

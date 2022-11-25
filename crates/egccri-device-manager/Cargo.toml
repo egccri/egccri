@@ -9,5 +9,6 @@ edition = "2021"
 egccri-device-model = { path = "../egccri-device-model" }
 egccri-device-storage = { path = "../egccri-device-storage" }
 egccri-storage-sqlite = { path = "../egccri-storage-sqlite" }
-serde = "1.0.145"
-serde_json = "1.0.86"
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true }
+tracing = { workspace = true }

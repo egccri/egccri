@@ -8,7 +8,7 @@ use serde_json::Value;
 
 /// 获取设备`Profile`
 fn get_shadow_profile() -> Result<DeviceProfile, Error> {
-    Ok(DeviceProfile::new(1000, vec![]))
+    Ok(DeviceProfile::new("1000".to_string(), vec![]))
 }
 
 fn save_shadow(json: &Value) -> Result<(), Error> {
