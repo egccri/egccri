@@ -10,3 +10,5 @@
     + 宿主机不受来宾的伤害（WASM架构）
     + 来宾不受宿主机的伤害（硬件安全SGX、SEV、TrustZone）
 + Profinet, Ethernet IP
++ 设备的虚拟化 Arki
++ cli模式确认，IPC或者子命令
