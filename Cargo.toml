@@ -13,8 +13,8 @@ path = "src/bin/standalone.rs"
 doc = false
 
 [[bin]]
-name = "egccri-cli"
-path = "src/bin/cli.rs"
+name = "egccri-client"
+path = "src/bin/client.rs"
 doc = false
 
 [dependencies]
@@ -26,7 +26,6 @@ once_cell = { workspace = true }
 anyhow = { workspace = true }
 tracing = { workspace = true }
 tracing-subscriber = { workspace = true }
-parity-tokio-ipc = { workspace = true }
 
 [workspace]
 members = [
@@ -64,11 +63,12 @@ thiserror = "1.0.37"
 anyhow = "1.0.65"
 tracing = "0.1"
 tracing-subscriber = "0.3"
-wasmtime = "2.0.2"
-wasmtime-wasi = "2.0.2"
+wasmtime = "3"
+wasmtime-wasi = "3"
 serde = { version = "1.0.145", features = ["derive"] }
 serde_json = "1.0.86"
 parity-tokio-ipc = "0.9.0"
+futures = "0.3.24"
 
 [profile.dev]
 opt-level = 0

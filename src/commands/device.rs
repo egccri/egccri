@@ -18,7 +18,10 @@ impl DeviceCommand {
     /// Executes the command.
     pub fn execute(self) -> Result<()> {
         if let Some(profile_file) = self.check_profile {
-            info!("Check device profile from path: {:?}", profile_file.as_os_str());
+            info!(
+                "Check device profile from path: {:?}",
+                profile_file.as_os_str()
+            );
             egccri_connect::cli::load_profile_check(profile_file);
         }
         if let Some(profile_file) = self.load_profile {

@@ -6,14 +6,14 @@ use tracing::{info, warn};
 /// Egccri Cli commands.
 #[derive(clap::Parser, Debug)]
 #[command(author, version, about, long_about = None)]
-enum Cli {
+enum Client {
     /// Config device.
     Device(DeviceCommand),
     /// Config storage
     Storage(StorageCommand),
 }
 
-impl Cli {
+impl Client {
     /// Executes the command.
     pub fn execute(self) -> Result<()> {
         match self {
@@ -29,5 +29,5 @@ impl Cli {
 fn main() -> Result<()> {
     tracing_subscriber::fmt::init();
     // parse or else default run command.
-    Cli::parse().execute()
+    Client::parse().execute()
 }
