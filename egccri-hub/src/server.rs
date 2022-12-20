@@ -1,4 +1,4 @@
-mod nng;
+mod grpc_server;
 
 use crate::config::config::{EdgeHubConfig, ServerProtocol};
 use crate::context::tenant::TenantId;
@@ -36,11 +36,8 @@ pub async fn start(edge_hub_config: &EdgeHubConfig) {
     let protocol = EdgeHubConfig::get_hub_enabled_server_protocol(edge_hub_config);
 
     match protocol {
-        ServerProtocol::ZMQ => {}
-        ServerProtocol::NNG => nng::start().await,
-        ServerProtocol::WS => {}
-        ServerProtocol::QUIC => {}
         ServerProtocol::MQTT => {}
+        ServerProtocol::GRPC => grpc_server::start().await,
     }
 }
 

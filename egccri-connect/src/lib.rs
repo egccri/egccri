@@ -40,7 +40,7 @@ async fn init() {
 
     // 3. fetch shadow information
 
-    // 4. inti mqtt networks.servers
+    // 4. inti mqtt networks.server
     inti_mqtt_server().await;
 
     // 5. setup client server

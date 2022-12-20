@@ -14,11 +14,8 @@ pub struct EdgeCoreConfig {
 
 #[derive(Debug, Clone, PartialEq)]
 pub enum ServerProtocol {
-    ZMQ,
-    WS,
-    QUIC,
     MQTT,
-    NNG,
+    GRPC,
 }
 
 #[derive(Debug, Clone, PartialEq)]
@@ -32,11 +29,8 @@ impl FromStr for ServerProtocol {
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         match s {
-            "ZMQ" => Ok(ServerProtocol::ZMQ),
-            "WS" => Ok(ServerProtocol::WS),
-            "QUIC" => Ok(ServerProtocol::QUIC),
             "MQTT" => Ok(ServerProtocol::MQTT),
-            "NNG" => Ok(ServerProtocol::NNG),
+            "GRPC" => Ok(ServerProtocol::GRPC),
             _ => Err(()),
         }
     }
