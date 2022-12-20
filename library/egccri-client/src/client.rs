@@ -6,16 +6,22 @@ pub struct Client {
 }
 
 impl Client {
-
     pub fn send() {
-        let mut client = Endpoint::connect(&path).await
+        let mut client = Endpoint::connect(&path)
+            .await
             .expect("Failed to connect client.");
 
         loop {
             let mut buf = [0u8; 4];
             println!("SEND: PING");
-            client.write_all(b"ping").await.expect("Unable to write message to client");
-            client.read_exact(&mut buf[..]).await.expect("Unable to read buffer");
+            client
+                .write_all(b"ping")
+                .await
+                .expect("Unable to write message to client");
+            client
+                .read_exact(&mut buf[..])
+                .await
+                .expect("Unable to read buffer");
             if let Ok("pong") = std::str::from_utf8(&buf[..]) {
                 println!("RECEIVED: PONG");
             } else {

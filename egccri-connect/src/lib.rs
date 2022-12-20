@@ -1,8 +1,8 @@
-use futures::{AsyncReadExt, AsyncWriteExt};
-use parity_tokio_ipc::{dummy_endpoint, Endpoint};
-use tokio::io::split;
 use egccri_storage_sqlite::StorageSqlite;
+use futures::StreamExt;
 use micro_async_module::{run_block_on, Config, Module};
+use parity_tokio_ipc::{dummy_endpoint, Endpoint};
+use tokio::io::{split, AsyncReadExt, AsyncWriteExt};
 use tracing::{info, warn};
 
 pub mod cli;
@@ -58,7 +58,8 @@ async fn inti_mqtt_server() {
 
 async fn init_client_socket_server() {
     let mut endpoint = Endpoint::new(dummy_endpoint());
-    let incoming = endpoint.incoming()
+    let incoming = endpoint
+        .incoming()
         .expect("failed to open up a new pipe/socket");
     futures::pin_mut!(incoming);
 
@@ -67,10 +68,16 @@ async fn init_client_socket_server() {
             Ok(stream) => {
                 let (mut reader, mut writer) = split(stream);
                 let mut buf = [0u8; 5];
-                reader.read_exact(&mut buf).await.expect("unable to read from socket");
-                writer.write_all(&buf[..]).await.expect("unable to write to socket");
+                reader
+                    .read_exact(&mut buf)
+                    .await
+                    .expect("unable to read from socket");
+                writer
+                    .write_all(&buf[..])
+                    .await
+                    .expect("unable to write to socket");
             }
-            _ => unreachable!("ideally")
+            _ => unreachable!("ideally"),
         }
-    };
+    }
 }
