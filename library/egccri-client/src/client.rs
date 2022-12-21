@@ -6,7 +6,7 @@ pub struct Client {
 }
 
 impl Client {
-    pub fn send() {
+    pub async fn send() {
         let mut client = Endpoint::connect(&path)
             .await
             .expect("Failed to connect client.");

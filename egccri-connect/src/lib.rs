@@ -1,14 +1,25 @@
+use egccri_device_manager::DeviceManager;
 use egccri_storage_sqlite::StorageSqlite;
-use futures::StreamExt;
 use micro_async_module::{run_block_on, Config, Module};
-use parity_tokio_ipc::{dummy_endpoint, Endpoint};
-use tokio::io::{split, AsyncReadExt, AsyncWriteExt};
 use tracing::{info, warn};
 
 pub mod cli;
 mod networks;
+mod server;
 mod shadow;
 
+pub fn start() {
+    // 1. init store
+    StorageSqlite.start();
+    // 2. init core conn to the edge-hub
+    // 4. inti networks.server(mqtt)
+    // 5. setup client server
+    EgccriConnect.start();
+    // 3. fetch shadow information and controller run
+    DeviceManager.start();
+}
+
+/// Connect edge-hub and recv command from client with unix domain socket.
 pub struct EgccriConnect;
 
 impl Module for EgccriConnect {
@@ -28,23 +39,14 @@ impl Module for EgccriConnect {
     }
 }
 
-pub fn start() {
-    StorageSqlite.start();
-    EgccriConnect.start();
-}
-
 async fn init() {
-    // 1. init store
+    // 1. init core conn to the edge-hub
 
-    // 2. init core conn to the edge-hub
-
-    // 3. fetch shadow information
-
-    // 4. inti mqtt networks.server
+    // 2. inti networks.server(mqtt)
     inti_mqtt_server().await;
 
-    // 5. setup client server
-    init_client_socket_server().await;
+    // 3. setup client server
+    server::init_client_socket_server().await;
 }
 
 async fn inti_mqtt_server() {
@@ -54,30 +56,4 @@ async fn inti_mqtt_server() {
     use networks::servers::mqtt_server;
     #[cfg(feature = "mqtt")]
     mqtt_server::start_mqtt_server("0.0.0.0:1883").await;
-}
-
-async fn init_client_socket_server() {
-    let mut endpoint = Endpoint::new(dummy_endpoint());
-    let incoming = endpoint
-        .incoming()
-        .expect("failed to open up a new pipe/socket");
-    futures::pin_mut!(incoming);
-
-    while let Some(result) = incoming.next().await {
-        match result {
-            Ok(stream) => {
-                let (mut reader, mut writer) = split(stream);
-                let mut buf = [0u8; 5];
-                reader
-                    .read_exact(&mut buf)
-                    .await
-                    .expect("unable to read from socket");
-                writer
-                    .write_all(&buf[..])
-                    .await
-                    .expect("unable to write to socket");
-            }
-            _ => unreachable!("ideally"),
-        }
-    }
 }
