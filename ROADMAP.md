@@ -12,3 +12,5 @@
 + Profinet, Ethernet IP
 + 设备的虚拟化 Arki
 + cli模式确认，IPC或者子命令
++ ESC开发模式，module
++ 公用API，考虑先生成stub，然后引入

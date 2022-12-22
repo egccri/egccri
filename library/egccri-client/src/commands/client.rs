@@ -1,4 +1,5 @@
 use parity_tokio_ipc::Endpoint;
+use std::path::PathBuf;
 use tokio::io::{AsyncReadExt, AsyncWriteExt};
 
 pub struct Client {
@@ -6,7 +7,9 @@ pub struct Client {
 }
 
 impl Client {
-    pub async fn send() {
+    pub async fn send_command<Command>(&self, command: Command) {}
+
+    pub async fn send(path: PathBuf) {
         let mut client = Endpoint::connect(&path)
             .await
             .expect("Failed to connect client.");
