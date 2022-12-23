@@ -8,6 +8,7 @@ edition.workspace = true
 
 [dependencies]
 egccri-device-model = { path = "../crates/egccri-device-model" }
+egccri-api = { path = "../crates/egccri-api" }
 clap = { workspace = true, features = ["color", "suggestions", "derive"] }
 tokio = { workspace = true, features = ["full"] }
 anyhow = { workspace = true }
@@ -16,7 +17,3 @@ log = "0.4.14"
 log4rs = "1.0.0"
 rdkafka = { version = "0.28.0", features = ["cmake-build"] }
 tonic = { workspace = true }
-prost = { workspace = true }
-
-[build-dependencies]
-tonic-build = "0.8.2"

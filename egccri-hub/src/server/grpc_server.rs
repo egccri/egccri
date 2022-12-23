@@ -1,12 +1,6 @@
-use clap::builder::TypedValueParser;
+use egccri_api::helloworld::greeter_server::{Greeter, GreeterServer};
+use egccri_api::helloworld::{HelloReply, HelloRequest};
 use tonic::{transport::Server, Request, Response, Status};
-
-use hello_world::greeter_server::{Greeter, GreeterServer};
-use hello_world::{HelloReply, HelloRequest};
-
-pub mod hello_world {
-    tonic::include_proto!("helloworld"); // The string specified here must match the proto package name
-}
 
 #[derive(Debug, Default)]
 pub struct MyGreeter {}
@@ -20,7 +14,7 @@ impl Greeter for MyGreeter {
         // Return an instance of type HelloReply
         println!("Got a request: {:?}", request);
 
-        let reply = hello_world::HelloReply {
+        let reply = HelloReply {
             message: format!("Hello {}!", request.into_inner().name).into(), // We must use .into_inner() as the fields of gRPC requests and responses are private
         };
 

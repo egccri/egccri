@@ -6,11 +6,8 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+egccri-api = { path = "../../crates/egccri-api" }
 tokio = { workspace = true, features = ["rt-multi-thread", "time", "macros"] }
 parity-tokio-ipc = { workspace = true }
-egccri-api = { path = "../../crates/egccri-api" }
 tonic = { workspace = true }
 prost = { workspace = true }
-
-[build-dependencies]
-tonic-build = "0.8.2"

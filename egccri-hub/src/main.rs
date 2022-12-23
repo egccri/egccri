@@ -46,12 +46,8 @@ async fn main() {
 
 #[cfg(test)]
 mod tests {
-    use hello_world::greeter_client::GreeterClient;
-    use hello_world::HelloRequest;
-
-    pub mod hello_world {
-        tonic::include_proto!("helloworld");
-    }
+    use egccri_api::helloworld::greeter_client::GreeterClient;
+    use egccri_api::helloworld::HelloRequest;
 
     #[tokio::test]
     async fn test_client() -> Result<(), Box<dyn std::error::Error>> {
