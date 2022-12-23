@@ -1,5 +1,4 @@
-use micro_async_module::run_block_on;
-use micro_async_module::{Config, Module};
+use micro_async_module::{run_async_block_on, AsyncRuntime, Module};
 use once_cell::sync::OnceCell;
 use sqlx::{Executor, Pool, Sqlite, SqlitePool};
 use thiserror::Error;
@@ -7,22 +6,18 @@ use tracing::info;
 
 static POLL: OnceCell<Pool<Sqlite>> = OnceCell::new();
 
+const MODULE_NAME: &str = "storage_sqlite";
+
+#[derive(Debug)]
 pub struct StorageSqlite;
 
 impl Module for StorageSqlite {
-    fn config(&self) -> Config {
-        Config {
-            name: "Storage sqlite".to_string(),
-            max_threads: 2,
-        }
+    fn name(&self) -> &str {
+        MODULE_NAME
     }
 
-    fn start(&self) {
-        run_block_on(init(), self.config());
-    }
-
-    fn context(&self) {
-        todo!()
+    fn start(&self, runtime: AsyncRuntime) {
+        run_async_block_on(init(), runtime);
     }
 }
 

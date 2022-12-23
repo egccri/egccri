@@ -1,4 +1,5 @@
 use anyhow::Result;
+use egccri_connect::{App, DeviceManager, EgccriConnect, StorageSqlite};
 use tracing::info;
 
 /// sub command run egccri modules.
@@ -35,10 +36,17 @@ pub struct RunConnect {
 }
 
 impl RunConnect {
-    /// execute run_connect command
+    /// 1. init store
+    /// 2. init core conn to the edge-hub
+    /// 3. fetch shadow information and controller run
+    /// 4. inti networks.server(mqtt)
+    /// 5. setup client server
     pub fn execute(self) -> Result<()> {
-        // initial storage.
-        egccri_connect::start();
+        let app = App::new("egccri".to_string(), 4, 100);
+        app.add_module(StorageSqlite)
+            .add_module(EgccriConnect)
+            .add_module(DeviceManager)
+            .run();
         Ok(())
     }
 }

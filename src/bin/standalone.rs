@@ -1,6 +1,6 @@
 use anyhow::Result;
 use clap::{error::ErrorKind, Parser};
-use egccri_cli::commands::{DeviceCommand, RunCommand};
+use egccri_cli::commands::RunCommand;
 use tracing::info;
 use tracing_subscriber;
 
