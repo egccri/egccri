@@ -20,7 +20,6 @@ parity-tokio-ipc = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
 futures = { workspace = true }
-nng = "1.0.0"
 
 [dev-dependencies]
 tracing-subscriber = { workspace = true }
