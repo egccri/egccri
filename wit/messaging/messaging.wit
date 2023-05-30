@@ -1,0 +1,5 @@
+package wasi:messaging
+
+world messaging {
+  
+}
