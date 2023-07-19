@@ -21,7 +21,7 @@ doc = false
 egccri-connect = { path = "egccri-connect" }
 egccri-compute = { path = "egccri-compute" }
 egccri-runtime = { path = "egccri-runtime" }
-egccri-client = { path = "library/egccri-client" }
+egccri-client = { path = "egccri-client" }
 clap = { workspace = true, features = ["color", "suggestions", "derive"] }
 once_cell = { workspace = true }
 anyhow = { workspace = true }
@@ -32,24 +32,26 @@ tracing-subscriber = { workspace = true }
 members = [
     "egccri-connect",
     "egccri-compute",
-    "egccri-hub",
     "egccri-runtime",
-    "library/egccri-client",
+    "egccri-client",
     "library/micro-async-module",
-    "library/module-sdk",
+    "library/pool",
+    "sdk/rust",
     "crates/egccri-api",
-    "crates/egccri-connect-modbus",
-    "crates/egccri-connect-mqtt",
-    "crates/egccri-connect-ble",
-    "crates/egccri-device-manager",
-    "crates/egccri-device-model",
-    "crates/egccri-device-storage",
-    "crates/egccri-storage-sqlite",
-    "crates/egccri-compute-core",
-    "crates/egccri-compute-uds",
-    "crates/egccri-compute-channel",
-    "crates/egccri-compute-scheduler",
-    "crates/egccri-compute-storage",
+    "crates/connect-tcp",
+    "crates/connect-modbus",
+    "crates/connect-mqtt",
+    "crates/connect-ble",
+    "crates/device-manager",
+    "crates/device-model",
+    "crates/device-storage",
+    "crates/device-storage-sqlite",
+    "crates/device-storage-tdengine",
+    "crates/compute-core",
+    "crates/compute-uds",
+    "crates/compute-channel",
+    "crates/compute-scheduler",
+    "crates/compute-storage",
 ]
 
 [workspace.package]
@@ -65,8 +67,8 @@ thiserror = "1.0.37"
 anyhow = "1.0.65"
 tracing = "0.1"
 tracing-subscriber = "0.3"
-wasmtime = "3"
-wasmtime-wasi = "3"
+wasmtime = "10"
+wasmtime-wasi = "10"
 serde = { version = "1.0.145", features = ["derive"] }
 serde_json = "1.0.86"
 parity-tokio-ipc = "0.9.0"

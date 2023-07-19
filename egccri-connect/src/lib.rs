@@ -6,8 +6,8 @@ mod networks;
 mod server;
 mod shadow;
 
-pub use egccri_device_manager::DeviceManager;
-pub use egccri_storage_sqlite::StorageSqlite;
+pub use device_manager::DeviceManager;
+pub use device_storage_sqlite::StorageSqlite;
 pub use micro_async_module::App;
 
 const MODULE_NAME: &str = "egccri_connect";

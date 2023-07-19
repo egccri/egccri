@@ -1,0 +1,16 @@
+[package]
+name = "device-storage-sqlite"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+device-storage = { path = "../device-storage" }
+micro-async-module = { path = "../../library/micro-async-module" }
+tracing = { workspace = true }
+#rusqlite = { version = "0.28.0", features = ["bundled"] }
+sqlx = { version = "0.6", features = ["sqlite", "runtime-tokio-rustls"] }
+thiserror = { workspace = true }
+once_cell = { workspace = true }
+

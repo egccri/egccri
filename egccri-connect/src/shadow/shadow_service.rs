@@ -2,8 +2,8 @@
 //!
 //! device_model转换为streaming_schema
 use anyhow::{Error, Result};
-use egccri_device_model::device::device_shadow;
-use egccri_device_model::device::profile::device_profile::DeviceProfile;
+use device_model::device::device_shadow;
+use device_model::device::profile::device_profile::DeviceProfile;
 use serde_json::Value;
 
 /// 获取设备`Profile`

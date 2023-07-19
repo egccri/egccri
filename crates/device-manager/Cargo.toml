@@ -1,0 +1,15 @@
+[package]
+name = "device-manager"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+micro-async-module = { path = "../../library/micro-async-module" }
+device-model = { path = "../device-model" }
+device-storage = { path = "../device-storage" }
+device-storage-sqlite = { path = "../device-storage-sqlite" }
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true }
+tracing = { workspace = true }

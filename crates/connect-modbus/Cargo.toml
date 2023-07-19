@@ -1,0 +1,10 @@
+[package]
+name = "connect-modbus"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tokio-modbus = { version = "0.5.3", default-features = false, features = ["tcp", "server", "tcp-server-unstable"] }
+socket2 = "0.4.5"

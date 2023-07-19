@@ -17,6 +17,7 @@ pub struct App {
     runtime: AsyncRuntime,
 }
 
+// FIXME Add join handles and channel
 #[derive(Debug, Clone)]
 pub struct AsyncRuntime {
     inner: Arc<Runtime>,
